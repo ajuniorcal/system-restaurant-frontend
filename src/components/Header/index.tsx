@@ -1,19 +1,18 @@
-import { useContext  } from 'react'
+import { useContext } from 'react'
 import styles from './styles.module.scss'
 import Link from 'next/link'
-
 import { FiLogOut } from 'react-icons/fi'
-
 import { AuthContext } from '../../contexts/AuthContext'
-import { Router } from 'next/router'
+import { useRouter } from 'next/router'
 
 export function Header(){
 
   const { signOut } = useContext(AuthContext)
+  const router = useRouter();
 
   const handleSignOut = () => {
-    signOut(Router);
-    window.location.reload(); // Atualiza a página após o logout
+    signOut(router);
+    window.location.reload();
   };
 
   return (
@@ -25,7 +24,6 @@ export function Header(){
 
         <nav className={styles.menuNav}>
           <Link href="/category">Categoria</Link>
-
           <Link href="/product">Cardapio</Link>
 
           <button onClick={handleSignOut}>

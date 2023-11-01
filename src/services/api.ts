@@ -1,19 +1,15 @@
 import axios, {AxiosError} from 'axios'
 import {parseCookies} from 'nookies'
 import {AuthTokenError} from './errors/AuthTokenError'
-
 import {signOut} from '../contexts/AuthContext'
 
 export function setupAPIClient(ctx = undefined){
-
     let cookies = parseCookies(ctx);
 
     const api = axios.create({
-      baseURL: 'http://localhost:3333/',
+      baseURL: 'https://backend-lefome.onrender.com/',
       headers: {
         Authorization: `Bearer ${cookies['@nextauth.token']}`
-
-
       }
     })
 
@@ -21,11 +17,9 @@ export function setupAPIClient(ctx = undefined){
         return response;
     }, (error: AxiosError) => {
         if(error.response.status === 401){
-            //Qualquer erro 401 devemos deslogar
             if(typeof window !== undefined){
-                //Chama função para deslogar o caba
                 signOut();
-            }else{
+            } else {
                 return Promise.reject(new AuthTokenError())
             }
         }
