@@ -18,7 +18,7 @@ export function setupAPIClient(ctx = undefined){
     }, (error: AxiosError) => {
         if(error.response.status === 401){
             if(typeof window !== undefined){
-                signOut();
+                alert("Sessão expirada, faça login novamente.");
             } else {
                 return Promise.reject(new AuthTokenError())
             }
