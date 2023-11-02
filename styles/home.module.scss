@@ -8,6 +8,19 @@
   background-color: var(--dark-900);
   overflow: hidden;
 
+  img {
+    width: 40%;
+    max-width: 100%; // Por exemplo, para garantir que a imagem não ultrapasse o contêiner
+    height: auto; // Para manter a proporção da imagem
+    // Outros estilos específicos que você quer aplicar à imagem
+  }
+
+}
+
+.logo {
+  width: 20%; // Ou um valor específico em pixels, se preferir.
+  max-width: 200px; // Um máximo para o tamanho da imagem.
+  height: auto; // Mantém a proporção da imagem.
 }
 
 .login{
@@ -47,5 +60,13 @@
 @media (max-width: 620px){
   .login{
     width: 90%;
+  }
+
+  .containerCenter{
+    img {
+      width: 100%;
+      margin-right: -25px;
+      max-width: 85%; // Por exemplo, para garantir que a imagem não ultrapasse o contêiner
+    }
   }
 }
