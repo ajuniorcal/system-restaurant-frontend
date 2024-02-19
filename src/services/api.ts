@@ -7,7 +7,7 @@ export function setupAPIClient(ctx = undefined){
     let cookies = parseCookies(ctx);
 
     const api = axios.create({
-      baseURL: 'https://backend-lefome.onrender.com/',
+      baseURL: 'http://api-lefome.ajrtec.xyz',
       headers: {
         Authorization: `Bearer ${cookies['@nextauth.token']}`
       }
